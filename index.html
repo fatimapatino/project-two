@@ -2,8 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8">
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
-    <script src="p5.js"></script>
+    <title>Stars</title>
   </head>
 
   <style>
@@ -11,62 +10,45 @@
       margin: 0;
       padding: 0;
       background-color: blue;
-
     }
 
     #pink {
-      position: relative;
+      position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       height: 300px;
       width: 300px;
-      border: 5px solid yellow;
+      border: 5px solid white;
       border-radius: 10px;
       background-color: pink;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 20px;
+      font-family: sans-serif;
+      word-wrap: true;
+      padding: 10px;
     }
 
-    #star {
+    .star {
       position: absolute;
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
       height: 100px;
       width: 100px;
-      background-color: yellow;
-      cursor: pointer;
-    }
-
-    #heart {
-      position: absolute;
-      clip-path: path("M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z");
-      height: 100px;
-      width: 100px;
-      background-color: red;
       cursor: pointer;
     }
   </style>
 
   <body>
     <div id="pink">hover over me for instructions!</div>
-    <div id="star"></div>
-    <div id="heart"></div>
-
-
-
 
 
     <script>
-      function randomHue() {
-        const h = Math.random() * 360
-        return `hsl(${h}deg, 50%, 50%`
-      }
       const p = document.querySelector('#pink')
-      const s = document.querySelector('#star')
-      const h = document.querySelector('#heart')
 
+      //hover instructions and exiting out of them
       function overMessage() {
         p.textContent = 'click on any element on this page to customize its color! click this box to begin!'
 
@@ -81,31 +63,28 @@
         elem.remove()
       }
 
-
       p.addEventListener('mouseover', overMessage)
       p.addEventListener('mouseout', outMessage)
       p.addEventListener('mouseup', click)
 
-
-      function mouseIsUp() {
-        s.style.backgroundColor = randomHue()
+      //selecting colors for stars
+      function randomHue() {
+        const h = Math.random() * 360
+        const s = Math.random() * 100
+        const l = Math.random() * 100
+        return `hsl(${h}deg, ${s}%, ${l}%`
       }
 
-      s.addEventListener('mouseup', mouseIsUp)
-
-      function mouseIsUpp() {
-        h.style.backgroundColor = randomHue()
+      for (let i = 0; i < 10; i++) {
+        const ele = document.createElement('div')
+        ele.classList.add('star')
+        ele.style.backgroundColor = randomHue()
+        ele.style.left = Math.random() * 100 + 'vw'
+        ele.style.top = Math.random() * 100 + 'vh'
+        document.body.appendChild(ele)
       }
-
-      h.addEventListener('mouseup', mouseIsUpp)
     </script>
 
   </body>
-
-
-
-
-
-
 
 </html>
