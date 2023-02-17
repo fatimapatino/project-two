@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8">
-    <title>Stars</title>
+    <title>What happened to the color?</title>
   </head>
 
   <style>
@@ -129,8 +129,8 @@
       //colors for pixel wall
       function randomHue() {
         const h = Math.random() * 360
-        const s = Math.random() * 50 + 50 
-        const l = Math.random() * 50 + 50
+        const s = Math.random() * 60 + 50 
+        const l = Math.random() * 60 + 50
         return `hsl(${h}deg, ${s}%, ${l}%`
       }
 
@@ -176,7 +176,7 @@
          let special = secretBtn 
         			special.style.height = 60 + 'px'
         			special.style.width = 60 + 'px'
-              special.style.backgroundColor = 'red'
+              special.style.backgroundColor = 'grey'
               special.style.left = Math.random() * window.innerWidth 
               special.style.top = Math.random() * window.innerHeight
               special.style.position = 'absolute'
@@ -210,11 +210,20 @@
         
          let goodbye = lastmsg 
          goodbye.style.display = 'flex'
+        
+        
       }
       secretBtn.addEventListener('mouseup', bringColor)
             
     </script>
-
+    
   </body>
 
+<!--   Some final notes: 
+  - i would want to make the squares pop up one by one
+  - maybe I could make it so that when I click the special button, it will expand into a gradient?
+  - i'd like to figure out a more efficienty way to write this code.
+  - overall, i felt proud figuring out how to make things appear in a sequence of clicking. 
+   -->
+  
 </html>
