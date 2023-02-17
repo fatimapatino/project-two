@@ -5,23 +5,23 @@
     <title>Stars</title>
   </head>
 
-  <style>
+  <style>    
     * {
       margin: 0;
       padding: 0;
-      background-color: blue;
+      background-color: black;
     }
 
-    #pink {
+    #first {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      height: 300px;
+      height: 150px;
       width: 300px;
-      border: 5px solid white;
+      border: 5px solid grey;
       border-radius: 10px;
-      background-color: pink;
+      background-color: grey;
       cursor: pointer;
       display: flex;
       justify-content: center;
@@ -30,59 +30,157 @@
       font-family: sans-serif;
       word-wrap: true;
       padding: 10px;
+      z-index: 100;
     }
-
-    .star {
+    
+    #second {
       position: absolute;
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      top: 25%;
+      left: 25%;
+      transform: translate(-50%, -50%);
       height: 100px;
       width: 100px;
+      border: 5px solid grey;
+      border-radius: 10px;
+      background-color: grey;
       cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-family: sans-serif;
+      word-wrap: true;
+      padding: 10px;
+      z-index: 100;
+      display: none;
+    }
+    
+     #third {
+      position: absolute;
+      top: 67%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      height: 100px;
+      width: 100px;
+      border: 5px solid grey;
+      border-radius: 10px;
+      background-color: grey;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-family: sans-serif;
+      word-wrap: true;
+      padding: 10px;
+      z-index: 100;
+      display: none;
+    }
+
+    .colors {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      cursor: pointer;
+      z-index: 1;
+    }
+    
+    .squares {
+      position: absolute;
+      height: 60px;
+      width: 60px;
+      z-index: 2;
     }
   </style>
 
   <body>
-    <div id="pink">hover over me for instructions!</div>
+    <div id="first">this looks kinda boring...</div>
+    <div id="second">could it be here?</div>
+    <div id="third">maybe here?</div>
 
 
     <script>
-      const p = document.querySelector('#pink')
-
-      //hover instructions and exiting out of them
-      function overMessage() {
-        p.textContent = 'click on any element on this page to customize its color! click this box to begin!'
-
+       let one = document.querySelector('#first')
+      let two = document.querySelector('#second')
+      let three = document.querySelector('#third')
+    
+  //first message
+    function overMessage() {
+        one.textContent = 'where is the color?'
       }
-
-      function outMessage() {
-        p.textContent = 'hover over me for instructions!'
-      }
+    one.addEventListener('mouseover', overMessage)
 
       function click() {
-        let elem = document.getElementById("pink");
+        let hey = document.getElementById('first');
+        let elem = document.getElementById('second');
+        elem.style.display = 'block';
+        hey.remove()
+      }
+      one.addEventListener('mouseup', click)
+    
+  //second message
+    function overSecond() {
+       two.textContent = 'no'
+    }
+     two.addEventListener('mouseover', overSecond)
+    
+     function clickSecond() {
+        let hey = document.getElementById('second');
+        let elem = document.getElementById('third');
+        elem.style.display = 'block';
+        hey.remove()
+      }
+      two.addEventListener('mouseup', clickSecond)
+      
+       //third message
+      function overThird() {
+        three.textContent = 'keep trying!'
+      }
+      three.addEventListener('mouseover', overThird)
+
+      function clickThird() {
+        let elem = document.getElementById("third");
         elem.remove()
       }
+      three.addEventListener('mouseup', clickThird)
+      
+      //create multiple divs to hover over
+//       for (let i = 0; i < 40; i++) {
+//         const ele = document.createElement('div')
+//         ele.classList.add('squares')
+//         ele.style.backgroundColor = 'grey'
+//         ele.style.left = Math.random() * 100 + 'vw'
+//         ele.style.top = Math.random() * 100 + 'vh'
+//         document.body.appendChild(ele)
+//       }
+      
+//       function specialSquare() {
+//         const special = document.createElement('div')
+//         special.style.color = 'red'
+//         special.style.left = 50 + 'vh'
+//         special.style.top = 50 + 'vw'
+//         special.style.position = 'absolute'
+//         special.style.cursor = 'pointer'
+//         special.style.zIndex = 100
+//       	document.body.appendChild(special)
+//       }
+      
+      //selecting colors for pixel wall
+//       function randomHue() {
+//         const h = Math.random() * 360
+//         const s = Math.random() * 50 + 50 
+//         const l = Math.random() * 50 + 50
+//         return `hsl(${h}deg, ${s}%, ${l}%`
+//       }
 
-      p.addEventListener('mouseover', overMessage)
-      p.addEventListener('mouseout', outMessage)
-      p.addEventListener('mouseup', click)
-
-      //selecting colors for stars
-      function randomHue() {
-        const h = Math.random() * 180 + 10
-        const s = Math.random() * 20 
-        const l = Math.random() * 100
-        return `hsl(${h}deg, ${s}%, ${l}%`
-      }
-
-      for (let i = 0; i < 10; i++) {
-        const ele = document.createElement('div')
-        ele.classList.add('star')
-        ele.style.backgroundColor = randomHue()
-        ele.style.left = Math.random() * 70 + 10 + 'vw'
-        ele.style.top = Math.random() * 40 + 'vh'
-        document.body.appendChild(ele)
-      }
+//       for (let i = 0; i < 800; i++) {
+//         const ele = document.createElement('div')
+//         ele.classList.add('colors')
+//         ele.style.backgroundColor = randomHue()
+//         ele.style.left = Math.random() * 120 - 10 + 'vw'
+//         ele.style.top = Math.random() * 120 - 10 + 'vh'
+//         document.body.appendChild(ele)
+//       }
     </script>
 
   </body>
