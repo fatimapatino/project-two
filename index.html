@@ -69,8 +69,8 @@
 
       //selecting colors for stars
       function randomHue() {
-        const h = Math.random() * 360
-        const s = Math.random() * 100
+        const h = Math.random() * 180 + 10
+        const s = Math.random() * 20 
         const l = Math.random() * 100
         return `hsl(${h}deg, ${s}%, ${l}%`
       }
@@ -79,8 +79,8 @@
         const ele = document.createElement('div')
         ele.classList.add('star')
         ele.style.backgroundColor = randomHue()
-        ele.style.left = Math.random() * 100 + 'vw'
-        ele.style.top = Math.random() * 100 + 'vh'
+        ele.style.left = Math.random() * 70 + 10 + 'vw'
+        ele.style.top = Math.random() * 40 + 'vh'
         document.body.appendChild(ele)
       }
     </script>
